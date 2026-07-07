@@ -15,7 +15,7 @@ if "OLMo" in model_name:
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 print("device is " + device, file=sys.stderr)
 
-model = AutoModelForCausalLM.from_pretrained(model_name,load_in_8bit=True,device_map="auto")
+model = AutoModelForCausalLM.from_pretrained(model_name,torch_dtype=torch.float32,device_map="auto")
 model.eval()
 
 if ("facebook/opt" in model_name):
